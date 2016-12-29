@@ -1,0 +1,13 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: oleg
+ * Date: 29.12.16
+ * Time: 0:09
+ */
+
+function commerce_add_to_cart_confirmation_page_attachments(array &$attachments) {
+  if (drupal_get_messages('commerce-add-to-cart-confirmation', FALSE)) {
+    $attachments['#attached']['library'][] = 'commerce_add_to_cart_confirmation/commerce_add_to_cart_confirmation';
+  }
+}

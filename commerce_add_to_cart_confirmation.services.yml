@@ -1,0 +1,5 @@
+services:
+  commerce_add_to_cart_confirmation.message:
+    class: 'Drupal\commerce_add_to_cart_confirmation\EventSubscriber\CommerceAddToCartConfirmationMessage'
+    tags:
+      - { name: 'event_subscriber' }

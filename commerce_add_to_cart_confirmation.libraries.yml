@@ -1,0 +1,24 @@
+commerce_add_to_cart_confirmation:
+  version: VERSION
+  js:
+    js/commerce_add_to_cart_confirmation.js: {}
+  css:
+    component:
+      css/commerce_add_to_cart_confirmation.css: {}
+#    theme:
+#      css/quickedit.theme.css: {}
+#      css/quickedit.icons.theme.css: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/underscore
+    - core/backbone
+    - core/jquery.form
+    - core/jquery.ui.position
+    - core/drupal
+    - core/drupal.displace
+    - core/drupal.form
+    - core/drupal.ajax
+    - core/drupal.debounce
+    - core/drupalSettings
+    - core/drupal.dialog
