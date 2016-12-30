@@ -10,6 +10,7 @@ namespace Drupal\commerce_add_to_cart_confirmation\EventSubscriber;
 
 use Drupal\commerce_cart\Event\CartEntityAddEvent;
 use Drupal\commerce_cart\Event\CartEvents;
+use Drupal\Console\Bootstrap\Drupal;
 use Drupal\Core\Render\Markup;
 use Drupal\views\Views;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -28,17 +29,16 @@ class CommerceAddToCartConfirmationMessage implements EventSubscriberInterface {
    * Code that should be triggered on event specified
    */
   public function onRespond(CartEntityAddEvent $event) {
-    $message = '<div class="added-product-title">' . t('Item successfully added to your cart') . '</div>';
+    $order_item_matcher = \Drupal::service('commerce_cart.order_item_matcher');
+    $matching_order_item = $order_item_matcher->match($event->getOrderItem(), $event->getCart()->getItems());
+
     $view = Views::getView('confirm_message_product_display');
     $view->setDisplay('default');
-    $view->setArguments([$event->getOrderItem()->id()]);
+    $view->setArguments([$matching_order_item->id()]);
     $elements = $view->render();
-
-    $message .= \Drupal::service('renderer')->render($elements);
-    // $message .= views_embed_view('confirm_message_product_display', 'default', $line_item->line_item_id);
+    $message = \Drupal::service('renderer')->render($elements);
     $rendered_message = Markup::create($message);
     drupal_set_message($rendered_message, 'commerce-add-to-cart-confirmation');
-
   }
 
 }
