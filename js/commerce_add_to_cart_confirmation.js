@@ -13,14 +13,13 @@
         var confirmationModal = Drupal.dialog(popup_content, {
           title: popup_title,
           dialogClass: 'commerce-add-to-cart-confirmation',
-          width: 575,
-          height: 230,
+          width: 745,
+          height: 375,
           maxWidth: '95%',
           autoResize: true,
           resizable: false,
 
           close: function (event) {
-            // Удаляем элемент который использовался для содержимого.
             $(event.target).remove();
           },
           buttons: [
@@ -28,7 +27,7 @@
               text: Drupal.t('Go to checkout'),
               class: 'button button--primary',
               click: function () {
-                widow.location.href = '/cart';
+                window.location.href = '/cart';
                 confirmationModal.close();
               }
             },
@@ -41,7 +40,6 @@
             }
           ]
         });
-        // Отображает модальное окно с overlay.
         confirmationModal.showModal();
       }
     }
