@@ -81,12 +81,11 @@ div.ui-dialog.commerce-add-to-cart-confirmation button.button:nth-child(2):hover
 
 div.ui-dialog.commerce-add-to-cart-confirmation .ui-dialog-titlebar {
   color: #444;
+  border: none;
   border-bottom: 1px solid #ccc;
 }
 
-div.ui-dialog.commerce-add-to-cart-confirmation .ui-dialog-titlebar.ui-corner-all {
-  border-radius: 0;
-}
+
 
 div.ui-dialog.commerce-add-to-cart-confirmation {
   padding-top: 38px;
