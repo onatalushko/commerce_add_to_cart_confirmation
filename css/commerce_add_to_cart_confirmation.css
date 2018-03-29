@@ -50,6 +50,7 @@
 div.ui-dialog.commerce-add-to-cart-confirmation .ui-widget-header.ui-corner-all {
   box-shadow: none;
   background: none;
+  padding-bottom: 19px;
 }
 
 /*buttons*/
@@ -85,11 +86,18 @@ div.ui-dialog.commerce-add-to-cart-confirmation .ui-dialog-titlebar {
   border-bottom: 1px solid #ccc;
 }
 
+div.ui-dialog.commerce-add-to-cart-confirmation .add-to-cart-confirmation.title {
+  font-weight: bold;
+}
 
+.commerce-add-to-cart-confirmation .views-field-type {
+  float: left;
+  margin-right: 10px;
+}
 
 div.ui-dialog.commerce-add-to-cart-confirmation {
   padding-top: 38px;
-  padding-left: 51px;
+  padding-left: 40px;
   padding-right: 51px;
 }
 
@@ -156,3 +164,19 @@ div.messages.commerce-add-to-cart-confirmation .view-confirm-message-product-dis
   display: inline;
   float: right; /* LTR */
 }
+
+.commerce-add-to-cart-confirmation .messages {
+  margin: 6px 0;
+}
+
+.commerce-add-to-cart-confirmation .views-row {
+  position: relative;
+}
+
+.commerce-add-to-cart-confirmation .views-row .views-field-total-price__number {
+  position: absolute;
+  right: 37px;
+  top: 15px;
+  font-size: 16px;
+}
+

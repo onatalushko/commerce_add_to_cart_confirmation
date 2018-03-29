@@ -1,0 +1,10 @@
+uuid: 10effcaa-0e85-4a9a-be09-97c77126e536
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.add_to_cart_confirmation_view
+label: 'Add to cart confirmation'
+targetEntityType: commerce_product
+cache: true
