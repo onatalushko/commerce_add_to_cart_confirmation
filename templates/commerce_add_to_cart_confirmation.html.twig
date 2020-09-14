@@ -1,17 +1,17 @@
 <div class="message-inner">
-    <div class="added-product-title clearfix"> {{ Item successfully added to your cart|t }} </div>
+    <div class="added-product-title clearfix">{{ 'Item successfully added to your cart'|t }}</div>
     <div class="button-wrapper">
         <div class="button checkout">'
-            Go to checkout
+          {{ 'Go to checkout'|t }}
         </div>
         <div class="button continue">
             <span class="commerce-add-to-cart-confirmation-close">
-                Continue shopping
+                {{ 'Continue shopping'|t }}
             </span>
         </div>
     </div>
     {{ view }}
     <a class="commerce-add-to-cart-confirmation-close" href="#">
-        <span class="element-invisible">Close</span>
+        <span class="element-invisible">{{ 'Close'|t }}</span>
     </a>
 </div>
