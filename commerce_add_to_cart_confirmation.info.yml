@@ -4,6 +4,6 @@ type: module
 core: 8.x
 package: Commerce (contrib)
 dependencies:
-  - commerce_cart
-  - commerce_product
-  - views
+  - commerce:commerce_cart
+  - commerce:commerce_product
+  - drupal:views

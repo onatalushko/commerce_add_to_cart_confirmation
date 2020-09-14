@@ -79,7 +79,7 @@ class OrderOtherCount extends AreaPluginBase {
    */
   public function render($empty = FALSE) {
     if (!$empty || !empty($this->options['empty'])) {
-      foreach ($this->view->argument as $name => $argument) {
+      foreach ($this->view->argument as $argument) {
         // First look for an order_id argument.
         if (!$argument instanceof NumericArgument) {
           continue;
