@@ -10,7 +10,7 @@ use Drupal\views\Views;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Event Subscriber CommerceAddToCartConfirmationMessage.
+ * Event Subscriber ConfirmationMessageSubscriber.
  */
 class ConfirmationMessageSubscriber implements EventSubscriberInterface {
 
@@ -35,14 +35,16 @@ class ConfirmationMessageSubscriber implements EventSubscriberInterface {
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    $events[CartEvents::CART_ENTITY_ADD][] = ['onRespond'];
+    $events[CartEvents::CART_ENTITY_ADD][] = ['onAddToCart'];
     return $events;
   }
 
   /**
-   * Code that should be triggered on event specified.
+   * Handles the add to cart event.
+   *
+   * @param \Drupal\commerce_cart\Event\CartEntityAddEvent $event
    */
-  public function onRespond(CartEntityAddEvent $event) {
+  public function onAddToCart(CartEntityAddEvent $event) {
     $view = Views::getView('confirm_message_product_display');
     $view->setDisplay('default');
     $view->setArguments([$event->getOrderItem()->id()]);
