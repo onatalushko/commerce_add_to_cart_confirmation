@@ -23,7 +23,7 @@ function commerce_add_to_cart_confirmation_page_attachments(array &$attachments)
 function commerce_add_to_cart_confirmation_preprocess_views_view(&$variables) {
   /** @var \Drupal\views\ViewExecutable $view */
   $view = $variables['view'];
-  if ($view->storage->id() == 'confirm_message_product_display') {
+  if ($view->storage->id() === 'confirm_message_product_display') {
     $variables['title'] = [
       '#type' => 'markup',
       '#markup' => '<div class="added-product-title">' . $view->getTitle() . '</div>',
@@ -42,7 +42,7 @@ function commerce_add_to_cart_confirmation_preprocess_field(&$variables) {
     return;
   }
 
-  if ($element['#view_mode'] != 'add_to_cart_confirmation') {
+  if ($element['#view_mode'] !== 'add_to_cart_confirmation') {
     return;
   }
 
