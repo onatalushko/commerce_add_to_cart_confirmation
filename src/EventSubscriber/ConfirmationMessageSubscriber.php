@@ -4,6 +4,7 @@ namespace Drupal\commerce_add_to_cart_confirmation\EventSubscriber;
 
 use Drupal\commerce_cart\Event\CartEntityAddEvent;
 use Drupal\commerce_cart\Event\CartEvents;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\views\Views;
@@ -22,13 +23,23 @@ class ConfirmationMessageSubscriber implements EventSubscriberInterface {
   protected $renderer;
 
   /**
+   * The messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * Constructs a new ConfirmationMessageSubscriber instance.
    *
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
    */
-  public function __construct(RendererInterface $renderer) {
+  public function __construct(RendererInterface $renderer, MessengerInterface $messenger) {
     $this->renderer = $renderer;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -51,7 +62,7 @@ class ConfirmationMessageSubscriber implements EventSubscriberInterface {
     $elements = $view->render();
     $message = $this->renderer->render($elements);
     $rendered_message = Markup::create($message);
-    drupal_set_message($rendered_message, 'commerce-add-to-cart-confirmation');
+    $this->messenger->addMessage($rendered_message, 'commerce-add-to-cart-confirmation');
   }
 
 }

@@ -12,7 +12,7 @@ use Drupal\Component\Utility\Html;
  * Implements hook_page_attachments().
  */
 function commerce_add_to_cart_confirmation_page_attachments(array &$attachments) {
-  if (drupal_get_messages('commerce-add-to-cart-confirmation', FALSE)) {
+  if (\Drupal::messenger()->messagesByType('commerce-add-to-cart-confirmation')) {
     $attachments['#attached']['library'][] = 'commerce_add_to_cart_confirmation/commerce_add_to_cart_confirmation';
   }
 }
