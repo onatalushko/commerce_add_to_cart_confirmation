@@ -2,13 +2,9 @@
 
 namespace Drupal\commerce_add_to_cart_confirmation\Plugin\views\area;
 
-use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\commerce_order\Plugin\views\area\OrderTotal;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\views\Plugin\views\area\AreaPluginBase;
 use Drupal\views\Plugin\views\argument\NumericArgument;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines an order total area handler.
@@ -60,7 +56,7 @@ class OrderItemOrderTotal extends OrderTotal {
         if ($argument->getField() !== 'commerce_order_item.order_item_id') {
           continue;
         }
-        /** @var OrderItemInterface $order_item */
+        /** @var \Drupal\commerce_order\Entity\OrderItemInterface $order_item */
         $order_item = $this->orderItemStorage->load($argument->getValue());
         if (!$order_item) {
           continue;

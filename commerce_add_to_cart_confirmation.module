@@ -1,12 +1,12 @@
 <?php
+
 /**
  * @file
  * Commerce add to cart confirmation module.
  */
+
 use Drupal\commerce_product\Entity\ProductVariationInterface;
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_page_attachments().

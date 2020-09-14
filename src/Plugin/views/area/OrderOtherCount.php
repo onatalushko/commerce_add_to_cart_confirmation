@@ -2,8 +2,6 @@
 
 namespace Drupal\commerce_add_to_cart_confirmation\Plugin\views\area;
 
-use Drupal\commerce_order\Entity\OrderItemInterface;
-use Drupal\commerce_price\Price;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\area\AreaPluginBase;
@@ -89,14 +87,14 @@ class OrderOtherCount extends AreaPluginBase {
         if ($argument->getField() !== 'commerce_order_item.order_item_id') {
           continue;
         }
-        /** @var OrderItemInterface $order_item */
+        /** @var \Drupal\commerce_order\Entity\OrderItemInterface $order_item */
         $order_item = $this->orderItemStorage->load($argument->getValue());
         if (!$order_item) {
           continue;
         }
         if ($order = $order_item->getOrder()) {
           $current_order_item_quantity = $order_item->getQuantity();
-          $total_order_quantity = 0 ;
+          $total_order_quantity = 0;
           $other_order_price = $order->getTotalPrice()->subtract($order_item->getTotalPrice());
           foreach ($order->getItems() as $item) {
             $total_order_quantity += $item->getQuantity();
