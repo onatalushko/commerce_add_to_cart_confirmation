@@ -17,7 +17,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Event Subscriber CommerceAddToCartConfirmationMessage.
  */
-class CommerceAddToCartConfirmationMessage implements EventSubscriberInterface {
+class ConfirmationMessageSubscriber implements EventSubscriberInterface {
   public static function getSubscribedEvents() {
     $events[CartEvents::CART_ENTITY_ADD][] = ['onRespond'];
     return $events;
