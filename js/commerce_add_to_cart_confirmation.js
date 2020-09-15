@@ -4,8 +4,8 @@
 
   Drupal.behaviors.commerce_add_to_cart_confirmation = {
     attach:function (context) {
-      var popup_content = $('.messages--commerce-add-to-cart-confirmation > div', context).clone();
-      $('.messages--commerce-add-to-cart-confirmation').remove();
+      var popup_content = $('.commerce-add-to-cart-confirmation', context).clone();
+      $('.commerce-add-to-cart-confirmation').remove();
       if (popup_content.length > 0) {
         var popup_title = popup_content.find('.added-product-title').html();
         popup_content.find('.added-product-title').remove();
