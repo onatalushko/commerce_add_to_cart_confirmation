@@ -59,10 +59,11 @@ class ConfirmationMessageSubscriber implements EventSubscriberInterface {
     $view = Views::getView('confirm_message_product_display');
     $view->setDisplay('default');
     $view->setArguments([$event->getOrderItem()->id()]);
-    $elements = $view->render();
-    $message = $this->renderer->render($elements);
-    $rendered_message = Markup::create($message);
-    $this->messenger->addMessage($rendered_message, 'commerce-add-to-cart-confirmation');
+    $confirmation_message = [
+      '#theme' => 'commerce_add_to_cart_confirmation',
+      '#message' => $view->render(),
+    ];
+    $this->messenger->addMessage($this->renderer->render($confirmation_message), 'commerce-add-to-cart-confirmation');
   }
 
 }

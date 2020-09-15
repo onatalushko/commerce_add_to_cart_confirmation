@@ -2,7 +2,7 @@
 
   'use strict';
 
-  Drupal.behaviors.commerce_add_to_cart_confirmation_overlay = {
+  Drupal.behaviors.commerce_add_to_cart_confirmation = {
     attach:function (context) {
       var popup_content = $('.messages--commerce-add-to-cart-confirmation > div', context).clone();
       $('.messages--commerce-add-to-cart-confirmation').remove();
@@ -22,25 +22,12 @@
           close: function (event) {
             $(event.target).remove();
           },
-          buttons: [
-            {
-              text: Drupal.t('Continue shopping'),
-              class: 'button',
-              click: function () {
-                confirmationModal.close();
-              }
-            },
-            {
-              text: Drupal.t('Go to checkout'),
-              class: 'button button--primary',
-              click: function () {
-                window.location.href = '/cart';
-                confirmationModal.close();
-              }
-            }
-          ]
         });
         confirmationModal.showModal();
+
+        popup_content.on('click touchend', '.commerce-add-to-cart-confirmation-close', function() {
+          Drupal.dialog(popup_content).close();
+        });
       }
     }
   }

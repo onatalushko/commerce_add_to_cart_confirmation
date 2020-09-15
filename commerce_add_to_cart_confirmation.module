@@ -9,6 +9,21 @@ use Drupal\commerce_product\Entity\ProductVariationInterface;
 use Drupal\Component\Utility\Html;
 
 /**
+ * Implements hook_theme().
+ */
+function commerce_add_to_cart_confirmation_theme() {
+  return [
+    'commerce_add_to_cart_confirmation' => [
+      'template' => 'commerce_add_to_cart_confirmation',
+      'path' => drupal_get_path('module', 'commerce_add_to_cart_confirmation') . '/templates',
+      'variables' => [
+        'message' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
  * Implements hook_page_attachments().
  */
 function commerce_add_to_cart_confirmation_page_attachments(array &$attachments) {
